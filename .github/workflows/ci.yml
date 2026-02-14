@@ -1,14 +1,22 @@
 name: Validate Renovate
 
+env:
+  RENOVATE_VERSION: "43.14.1"
+
 on:
   pull_request:
     paths:
       - ".github/workflows/renovate.yml"
+      - ".github/workflows/ci.yml"
       - ".github/renovate.json"
       - ".github/renovate.json5"
       - "renovate.json"
       - "renovate.json5"
+      - "renovate-config.json"
       - "org-inherited-config.json"
+  merge_group:
+    branches:
+      - main
 
 jobs:
   validate:
@@ -22,12 +30,11 @@ jobs:
         with:
           node-version: latest
 
-      # Hosted Renovate should use the latest available version, so always
-      # install the newest version of Renovate
       - name: Install dependencies
-        run: npm install -g renovate
+        run: npm install -g renovate@${RENOVATE_VERSION}
 
-      - name: Validate Renovate config
-        env:
-          CONFIG_FILE: 'org-inherited-config.json'
-        run: renovate-config-validator --strict ${CONFIG_FILE}
+      - name: Validate org-inherited-config.json
+        run: renovate-config-validator --strict org-inherited-config.json
+
+      - name: Validate renovate-config.json
+        run: renovate-config-validator --strict renovate-config.json

@@ -1,5 +1,8 @@
 name: Renovate Self-Hosted
 
+env:
+  RENOVATE_VERSION: "43.14.1"
+
 on:
   pull_request:
     branches:
@@ -48,4 +51,5 @@ jobs:
           RENOVATE_PLATFORM_COMMIT: 'true'
         with:
           token: ${{ steps.get-token.outputs.token }}
+          renovate-version: ${{ env.RENOVATE_VERSION }}
           configurationFile: ./renovate-config.json

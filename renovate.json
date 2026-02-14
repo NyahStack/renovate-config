@@ -3,6 +3,25 @@
   "extends": [
     "config:recommended"
   ],
+  "packageRules": [
+    {
+      "description": "Automerge workflow action updates",
+      "matchManagers": [
+        "github-actions"
+      ],
+      "automerge": true
+    },
+    {
+      "description": "Automerge Renovate version pin updates in workflows",
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "matchPackageNames": [
+        "renovate"
+      ],
+      "automerge": true
+    }
+  ],
   "customManagers": [
     {
       "customType": "regex",

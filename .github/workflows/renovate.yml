@@ -49,7 +49,7 @@ jobs:
         env:
           RENOVATE_DRY_RUN: ${{ (github.event_name == 'pull_request' || github.event_name == 'merge_group') && 'full' || '' }}
           LOG_LEVEL: ${{ github.event.inputs.log-level || 'info' }}
-          RENOVATE_PLATFORM_COMMIT: 'true'
+          RENOVATE_PLATFORM_COMMIT: 'enabled'
         with:
           token: ${{ steps.get-token.outputs.token }}
           renovate-version: ${{ env.RENOVATE_VERSION }}

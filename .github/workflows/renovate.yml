@@ -1,7 +1,7 @@
 name: Renovate Self-Hosted
 
 env:
-  RENOVATE_VERSION: "43.74.0"
+  RENOVATE_VERSION: "43.75.0"
 
 on:
   pull_request:

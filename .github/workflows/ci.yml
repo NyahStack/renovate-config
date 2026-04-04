@@ -1,7 +1,7 @@
 name: Validate Renovate
 
 env:
-  RENOVATE_VERSION: "43.102.7"
+  RENOVATE_VERSION: "43.102.8"
 
 on:
   pull_request:
